@@ -8,7 +8,13 @@ const client = new Client({
   ],
 });
 const fs = require("fs");
+const mongoose = require("mongoose");
 
+mongoose.connect(process.env.mongo_path, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: true,
+});
 client.commands = {
   prefix: "nh ",
   commands: new Collection(),
