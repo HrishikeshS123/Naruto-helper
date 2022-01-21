@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/HrishikeshS123/Naruto-helper#readme",
   "dependencies": {
-    "discord.js": "^12.5.3"
+    "discord.js": "^13.6.0"
   }
 }
