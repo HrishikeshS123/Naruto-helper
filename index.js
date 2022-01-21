@@ -11,4 +11,4 @@ client.on("messageCreate", async (message) => {
     console.log(message.content)
 })
 
-client.login("OTMzNzU0MDk1NzcxMTkzMzk0.YemIRA.5cdJ3mDG1fb6RRfLdQ8pcqNcVT0")
+client.login(process.env.token)
