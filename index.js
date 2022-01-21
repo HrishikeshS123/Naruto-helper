@@ -33,12 +33,30 @@ for (const folder of commandFolders) {
 
 // Command Handling
 
+// Event Handling
+
+const eventFiles = fs
+  .readdirSync("./events")
+  .filter((file) => file.endsWith(".js"));
+
+for (const file of eventFiles) {
+  const event = require(`./events/${file}`);
+
+  if (event.once) {
+    client.once(event.name, (...args) => event.execute(...args, client));
+  } else {
+    client.on(event.name, (...args) => event.execute(...args, client));
+  }
+}
+
+// Event Handling
+
 client.on("ready", () => {
   console.log("Ready!");
 });
 
 client.on("messageCreate", async (message) => {
-  if (!message.content.toLowerCase().startsWith(config.prefix)) return;
+  if (!message.content.toLowerCase().startsWith(client.commands.prefix)) return;
   if (message.author.bot) return;
 
   const args = message.content
