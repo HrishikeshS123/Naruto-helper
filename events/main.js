@@ -1,5 +1,5 @@
 const { Message, Client } = require("discord.js");
-
+const database = require("../models/user");
 let alreadyBeingReminded = [];
 module.exports = {
   name: "messageCreate",
@@ -20,6 +20,7 @@ module.exports = {
       alreadyBeingReminded = alreadyBeingReminded.filter(
         (value) => value !== `${message.author.id}.m`
       );
+      addStat(message.author.id, "m");
     } else if (
       message.content.toLocaleLowerCase().startsWith("n r") &&
       !alreadyBeingReminded.includes(`${message.author.id}.r`)
@@ -30,6 +31,7 @@ module.exports = {
       alreadyBeingReminded = alreadyBeingReminded.filter(
         (val) => val !== `${message.author.id}.r`
       );
+      addStat(message.author.id, "r");
     }
   },
 };
@@ -37,3 +39,23 @@ module.exports = {
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+const addStat = async (userId, where) => {
+  let dbUser = await database.findOne({
+    userId,
+  });
+
+  if (!dbUser) {
+    dbUser = new database({
+      userId,
+    });
+  }
+
+  if (where === "m") {
+    dbUser.stats.reminders.mission++;
+  } else if (where === "r") {
+    dbUser.stats.reminders.report++;
+  }
+
+  dbUser.save();
+};
