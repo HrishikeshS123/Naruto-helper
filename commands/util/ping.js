@@ -1,4 +1,4 @@
-const { Message } = require("discord.js");
+const { Message, MessageEmbed } = require("discord.js");
 module.exports = {
   name: "ping",
   /**
@@ -6,6 +6,12 @@ module.exports = {
    * @param {Message} message
    */
   async execute(message) {
-    message.reply(`Pong! ${message.client.ws.ping}ms`);
+    message.reply({
+      embeds: [
+        new MessageEmbed().setDescription(
+          `\`\`\`xml\n<Ping: ${message.client.ws.ping}>\n\`\`\``
+        ),
+      ],
+    });
   },
 };
