@@ -8,9 +8,12 @@ module.exports = {
   async execute(message) {
     message.reply({
       embeds: [
-        new MessageEmbed().setDescription(
-          `\`\`\`xml\n<Ping: ${message.client.ws.ping}>\n\`\`\``
-        ),
+        new MessageEmbed()
+          .setDescription(
+            `\`\`\`xml\n<Ping: ${message.client.ws.ping}>\n\`\`\``
+          )
+          .setTitle("Pong! :ping_pong:")
+          .setColor("GOLD"),
       ],
     });
   },
