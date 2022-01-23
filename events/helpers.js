@@ -15,7 +15,7 @@ module.exports = {
     if (title.includes("balance")) {
       await message.react("🔢");
       const collector = message.createReactionCollector({
-        filter: (r) => r.emoji.name === "🔢",
+        filter: (r, u) => r.emoji.name === "🔢" && !u.bot,
         max: 1,
       });
 
