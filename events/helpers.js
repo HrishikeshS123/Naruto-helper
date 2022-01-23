@@ -44,7 +44,8 @@ module.exports = {
             Math.floor(tix / 500).toLocaleString(),
             true
           )
-          .setColor("GOLD");
+          .setColor("GOLD")
+          .setFooter({ text: message.embeds[0].title });
 
         await message.reply({
           embeds: [embed],
