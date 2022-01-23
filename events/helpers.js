@@ -9,11 +9,11 @@ module.exports = {
   async execute(message) {
     if (!message.author.bot) return;
     if (message.author.id !== "770100332998295572") return;
-    if (!message.embeds[0]) return;
+    if (!message.embeds[0] || !message.embeds[0].title) return;
     const title = message.embeds[0].title;
 
     if (title.includes("balance")) {
-      message.react("🔢");
+      await message.react("🔢");
       const collector = message.createReactionCollector({
         filter: (r) => r.emoji.name === "🔢",
         max: 1,
@@ -44,6 +44,10 @@ module.exports = {
             Math.floor(tix / 500).toLocaleString(),
             true
           );
+
+        await message.reply({
+          embeds: [embed],
+        });
       });
     }
   },
