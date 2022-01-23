@@ -59,6 +59,7 @@ client.on("ready", () => {
     name: `nh help`,
     type: "LISTENING",
   });
+  client.emit("tick");
 });
 
 client.on("messageCreate", async (message) => {
