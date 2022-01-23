@@ -16,10 +16,6 @@ const UserSchema = new mongoose.Schema({
       challenge: { default: 0, type: Number },
     },
   },
-  reminders: {
-    tower: Number,
-    adventure: Number,
-  },
 });
 
 module.exports = new mongoose.model("user", UserSchema, "user");
