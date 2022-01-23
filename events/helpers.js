@@ -37,13 +37,14 @@ module.exports = {
 
         const embed = new MessageEmbed()
           .setTitle("Balance")
-          .setDescription("**This is what you can do with your balance:**")
+          .setDescription("**This is what you can do \nwith your balance:**")
           .addField("Pulls", Math.floor(ryo / 300).toLocaleString(), true)
           .addField(
             "Special pulls",
             Math.floor(tix / 500).toLocaleString(),
             true
-          );
+          )
+          .setColor("GOLD");
 
         await message.reply({
           embeds: [embed],

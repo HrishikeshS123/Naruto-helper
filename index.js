@@ -9,7 +9,7 @@ const client = new Client({
 });
 const fs = require("fs");
 const mongoose = require("mongoose");
-
+require("http").createServer().listen();
 mongoose.connect(process.env.mongo_path);
 client.commands = {
   prefix: "nh ",
