@@ -55,6 +55,10 @@ for (const file of eventFiles) {
 
 client.on("ready", () => {
   console.log("Ready!");
+  client.user.setActivity({
+    name: `nh help`,
+    type: "LISTENING",
+  });
 });
 
 client.on("messageCreate", async (message) => {
