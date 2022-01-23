@@ -9,8 +9,8 @@ module.exports = {
   async execute(message) {
     if (!message.author.bot) return;
     if (message.author.id !== "770100332998295572") return;
-
-    const title = message?.embeds[0].title;
+    if (!message.embeds[0]) return;
+    const title = message.embeds[0].title;
 
     if (title.includes("balance")) {
       message.react("🔢");
