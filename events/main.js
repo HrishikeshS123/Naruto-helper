@@ -105,7 +105,7 @@ module.exports = {
               });
 
               btn.reply({
-                embesd: [
+                embeds: [
                   new MessageEmbed()
                     .setTitle("CONFIRMED")
                     .setColor("GREEN")
