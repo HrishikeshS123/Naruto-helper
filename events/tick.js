@@ -25,9 +25,11 @@ module.exports = {
         for (const reminder of towerQ) {
           const user = await client.users.fetch(reminder.userId);
 
-          await user.send(
-            `Hey ${user.toString()}, you can run the **Tower** command again!`
-          );
+          await user
+            .send(
+              `Hey ${user.toString()}, you can run the **Tower** command again!`
+            )
+            .catch(e);
           reminder.reminded.tower = true;
           reminder.save();
         }
