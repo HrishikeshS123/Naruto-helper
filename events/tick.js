@@ -29,6 +29,7 @@ module.exports = {
             `Hey ${user.toString()}, you can run the **Tower** command again!`
           );
           reminder.reminded.tower = true;
+          reminder.save();
         }
       }
     }
